@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class InputManager3rd : MonoBehaviour
 {
-    PlayerControls3rd playerControls;
-    public Vector2 movementInput;
-    public float verticalInput;
-    public float horizontalInput;
+    PlayerControls3rd playerControls;  //Variable to store the player controls
+    AnimatorManager3rd animatorManager;  //Variable to store the animator manager componet
+    public Vector2 movementInput;  //Variable to store the movement input
+    private float moveAmount;  //Variable to store the move amount
+    public float verticalInput;  //Variable to store the vertical input
+    public float horizontalInput;  //Variable to store the horizontal input
+
+    private void Awake()  //Get the animator manager componet
+    {
+        animatorManager = GetComponent<AnimatorManager3rd>();  //Get the animator manager componet
+    }
 
     private void OnEnable()
     {
@@ -28,9 +35,12 @@ public class InputManager3rd : MonoBehaviour
     {
         verticalInput = movementInput.y;  //Get the vertical input
         horizontalInput = movementInput.x;   //Get the horizontal input
+
+        moveAmount = Mathf.Clamp01(Mathf.Abs(horizontalInput) + Mathf.Abs(verticalInput));  //Clamp the move amount
+        animatorManager.UpdateAnimatorValues(0, moveAmount);  //Update the animator values
     }
 
-    public void HandleAllInputs()
+    public void HandleAllInputs()  //Handle all the inputs
     {
         HandleMovementInput();  //Handle the movement input
     }
