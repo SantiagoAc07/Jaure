@@ -11,27 +11,27 @@ public class InputManager3rd : MonoBehaviour
 
     private void OnEnable()
     {
-        if (playerControls == null)
+        if (playerControls == null) //Check if the player controls are null
         {
-            playerControls = new PlayerControls3rd();
-            playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();
+            playerControls = new PlayerControls3rd();  //Create a new player controls
+            playerControls.PlayerMovement.Movement.performed += i => movementInput = i.ReadValue<Vector2>();  //Get the movement input
         }
-        playerControls.Enable();
+        playerControls.Enable();  //Enable the player controls
     }
 
     private void OnDisable()
     {
-        playerControls.Disable();
+        playerControls.Disable();  //Disable the player controls
     }
 
     private void HandleMovementInput()
     {
-        verticalInput = movementInput.y;
-        horizontalInput = movementInput.x;
+        verticalInput = movementInput.y;  //Get the vertical input
+        horizontalInput = movementInput.x;   //Get the horizontal input
     }
 
     public void HandleAllInputs()
     {
-        HandleMovementInput();
+        HandleMovementInput();  //Handle the movement input
     }
 }
