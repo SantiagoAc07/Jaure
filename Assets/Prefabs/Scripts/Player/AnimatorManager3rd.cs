@@ -17,8 +17,12 @@ public class AnimatorManager3rd : MonoBehaviour
 
     //function to update the animator parameters
 
-    public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement)
+    public void UpdateAnimatorValues(float horizontalMovement, float verticalMovement, bool isRunning) //Update the animator values
     {
+        if (isRunning)
+        {
+            verticalMovement = 2; //Set the vertical movement to 2
+        }
         animator.SetFloat(horizontal, horizontalMovement, 0.1f, Time.deltaTime); //Update the horizontal parameter on the animator
         animator.SetFloat(vertical, verticalMovement, 0.1f, Time.deltaTime); //Update the vertical parameter on the animator
     }
