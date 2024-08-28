@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028326, g: 0.22571333, b: 0.30692202, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,9 +136,9 @@ GameObject:
   - component: {fileID: 81957357}
   - component: {fileID: 81957356}
   - component: {fileID: 81957355}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -266,15 +266,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: eeb2b382bbd3b4882b789882aebf1ec7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.841
+      value: 13.85
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eeb2b382bbd3b4882b789882aebf1ec7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 3.59
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eeb2b382bbd3b4882b789882aebf1ec7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.526
+      value: 11.362
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eeb2b382bbd3b4882b789882aebf1ec7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -380,10 +380,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 487a5a4e610ae4f4b95e7bda6fed0e5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inAirTimer: 0
+  leapingVelocity: 3
+  fallingVelocity: 100
+  rayCastHeightOffSet: 0.05
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  maxDistance: 0.5
   walkingSpeed: 2.5
   runningSpeed: 7
   rotationSpeed: 15
   isRunning: 0
+  isGrounded: 0
 --- !u!114 &313468718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,6 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e44ea96053e78456687ad89f9e22b10b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInteracting: 0
 --- !u!114 &313468719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -457,7 +467,7 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -579,7 +589,7 @@ GameObject:
   - component: {fileID: 728269578}
   - component: {fileID: 728269577}
   - component: {fileID: 728269576}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Terrain
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -596,7 +606,7 @@ TerrainCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 8
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -765,9 +775,9 @@ GameObject:
   - component: {fileID: 1589752321}
   - component: {fileID: 1589752320}
   - component: {fileID: 1589752319}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -898,9 +908,9 @@ GameObject:
   - component: {fileID: 1910523192}
   - component: {fileID: 1910523191}
   - component: {fileID: 1910523190}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

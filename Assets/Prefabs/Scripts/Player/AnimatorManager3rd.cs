@@ -26,4 +26,11 @@ public class AnimatorManager3rd : MonoBehaviour
         animator.SetFloat(horizontal, horizontalMovement, 0.1f, Time.deltaTime); //Update the horizontal parameter on the animator
         animator.SetFloat(vertical, verticalMovement, 0.1f, Time.deltaTime); //Update the vertical parameter on the animator
     }
+
+
+    public void PlayerTargetAnimation(string targetAnimation, bool isInteracting)
+{
+    animator.SetBool(targetAnimation, isInteracting); // Asegúrate de que el parámetro esté definido en el Animator
+    animator.CrossFade(targetAnimation, 0.2f);
+}
 }
