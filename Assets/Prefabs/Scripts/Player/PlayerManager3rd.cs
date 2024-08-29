@@ -4,34 +4,32 @@ using UnityEngine;
 
 public class PlayerManager3rd : MonoBehaviour
 {
-    Animator animator; //Variable to store the animator componet
-    InputManager3rd inputManager; //To reference the InputManager3rd script 
-    PlayerMovement3rd playerMovement; //To reference the PlayerMovement3rd script
+    Animator animator;//to store the animator component
+    InputManager3rd inputManager3rd; 
+    PlayerMovement3rd playerMovement3rd;
 
-    public bool isInteracting; //Variable to check if the player is interacting
+    public bool isInteracting; //bool to get the status from the animator
 
     private void Awake()
     {
-        animator = GetComponentInChildren<Animator>(); //Assign the animator component to the animator variable
-        inputManager = GetComponent<InputManager3rd>(); //Assign the InputManager3rd script to inputManager
-        playerMovement = GetComponent<PlayerMovement3rd>(); //Assign the PlayerMovement3rd script to playerMovement
+        animator = GetComponent<Animator>();//get the component
+        inputManager3rd = GetComponent<InputManager3rd>(); 
+        playerMovement3rd = GetComponent<PlayerMovement3rd>(); 
     }
-
-    private void LateUpdate()
-{
-    isInteracting = animator.GetBool("isInteracting"); // Asegúrate de que el parámetro esté definido en el Animator
-}
 
     private void Update()
     {
-        inputManager.HandleAllInputs(); //Call the HandleAllInputs method from the InputManager3rd script
+        inputManager3rd.HandleAllInputs();
     }
 
-    
     private void FixedUpdate()
     {
-        playerMovement.HandleAllMovement(); //Call the HandleAllMovement method from the PlayerMovement3rd script
+        playerMovement3rd.HandleAllMovement();
     }
 
-    
+    private void LateUpdate()//code here is executed after the update()
+    {
+        //check every frame in the animator the status of "isInteracting" and update isInteracting bool here
+        isInteracting = animator.GetBool("isInteracting");
+    }
 }
