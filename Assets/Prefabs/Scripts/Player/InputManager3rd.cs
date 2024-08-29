@@ -17,6 +17,7 @@ public class InputManager3rd : MonoBehaviour
     {
         animatorManager = GetComponent<AnimatorManager3rd>();  //Get the animator manager componet
         playerMovement = GetComponent<PlayerMovement3rd>();  //Get the player movement componet
+        playerControls = new PlayerControls3rd();  //Create a new player controls
     }
 
     void Update()
@@ -53,6 +54,8 @@ public class InputManager3rd : MonoBehaviour
 
     public void HandleAllInputs()  //Handle all the inputs
     {
+        verticalInput = playerControls.PlayerMovement.Movement.ReadValue<Vector2>().y;
+        horizontalInput = playerControls.PlayerMovement.Movement.ReadValue<Vector2>().x;
         HandleMovementInput();  //Handle the movement input
         HandleRunningInput();  //Handle the running input
     }

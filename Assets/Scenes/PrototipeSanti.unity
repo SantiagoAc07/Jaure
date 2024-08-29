@@ -270,7 +270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eeb2b382bbd3b4882b789882aebf1ec7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.59
+      value: 5.69
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: eeb2b382bbd3b4882b789882aebf1ec7, type: 3}
       propertyPath: m_LocalPosition.z
@@ -383,7 +383,7 @@ MonoBehaviour:
   inAirTimer: 0
   leapingVelocity: 3
   fallingVelocity: 100
-  rayCastHeightOffSet: 0.05
+  rayCastHeightOffSet: 0.27
   groundLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -392,7 +392,7 @@ MonoBehaviour:
   runningSpeed: 7
   rotationSpeed: 15
   isRunning: 0
-  isGrounded: 0
+  isInteracting: 0
 --- !u!114 &313468718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +442,7 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.21
-  m_Height: 2.3
+  m_Height: 2.25
   m_Direction: 1
   m_Center: {x: 0, y: 1.15, z: 0}
 --- !u!54 &313468721

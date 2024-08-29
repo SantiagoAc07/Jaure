@@ -29,13 +29,13 @@ public class PlayerMovement3rd : MonoBehaviour
     public float rotationSpeed = 15;
 
     public bool isRunning;
-    public bool isGrounded;
+    public bool isInteracting;
 
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager3rd>(); //Get the PlayerManager3rd script
         animatorManager = GetComponent<AnimatorManager3rd>(); //Get the AnimatorManager3rd script
-        isGrounded = true;
+        isInteracting = true;
         inputManager = GetComponent<InputManager3rd>();
         playerRigidbody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
@@ -115,36 +115,30 @@ public class PlayerMovement3rd : MonoBehaviour
     Vector3 rayCastOrigin = transform.position;
     rayCastOrigin.y = rayCastOrigin.y + rayCastHeightOffSet;
 
-    if (!isGrounded)
+    if (!isInteracting)
     {
-        if (!playerManager.isInteracting)
-        {
-            animatorManager.PlayerTargetAnimation("IsGrounded", false);
-        }
-
         inAirTimer += Time.deltaTime;
         playerRigidbody.AddForce(transform.forward * leapingVelocity);
         playerRigidbody.AddForce(Vector3.down * fallingVelocity * inAirTimer);
     }
-    else
-    {
-        animatorManager.PlayerTargetAnimation("IsGrounded", true);
-    }
 
     if (Physics.SphereCast(rayCastOrigin, 0.1f, Vector3.down, out hit, maxDistance, groundLayer))
     {
-        if (!isGrounded && playerManager.isInteracting)
+        if (!isInteracting)
         {
-            animatorManager.PlayerTargetAnimation("IsGrounded", true);
+            animatorManager.PlayerTargetAnimation("IsInteracting", false);
+            isInteracting = true;
+            inAirTimer = 0;
+            playerManager.isInteracting = false;
         }
-
-        inAirTimer = 0;
-        isGrounded = true;
-        playerManager.isInteracting = false;
     }
     else
     {
-        isGrounded = false;
+        if (isInteracting)
+        {
+            animatorManager.PlayerTargetAnimation("IsInteracting", true);
+            isInteracting = false;
+        }
     }
 }
 

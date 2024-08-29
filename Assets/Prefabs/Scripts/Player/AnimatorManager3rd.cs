@@ -30,7 +30,7 @@ public class AnimatorManager3rd : MonoBehaviour
 
     public void PlayerTargetAnimation(string targetAnimation, bool isInteracting)
 {
-    animator.SetBool(targetAnimation, isInteracting); // Asegúrate de que el parámetro esté definido en el Animator
+    animator.SetBool("IsInteracting", isInteracting);
     animator.CrossFade(targetAnimation, 0.2f);
 }
 }

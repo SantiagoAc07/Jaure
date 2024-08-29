@@ -17,17 +17,21 @@ public class PlayerManager3rd : MonoBehaviour
         playerMovement = GetComponent<PlayerMovement3rd>(); //Assign the PlayerMovement3rd script to playerMovement
     }
 
+    private void LateUpdate()
+{
+    isInteracting = animator.GetBool("isInteracting"); // Asegúrate de que el parámetro esté definido en el Animator
+}
+
     private void Update()
     {
         inputManager.HandleAllInputs(); //Call the HandleAllInputs method from the InputManager3rd script
     }
+
+    
     private void FixedUpdate()
     {
         playerMovement.HandleAllMovement(); //Call the HandleAllMovement method from the PlayerMovement3rd script
     }
 
-    private void LateUpdate()
-{
-    isInteracting = animator.GetBool("isInteracting"); // Asegúrate de que el parámetro esté definido en el Animator
-}
+    
 }
