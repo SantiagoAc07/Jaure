@@ -29,13 +29,13 @@ public class PlayerMovement3rd : MonoBehaviour
     public float rotationSpeed = 15;
 
     public bool isRunning;
-    public bool isGrounded;
+    public bool isInteracting;
 
     private void Awake()
     {
         playerManager = GetComponent<PlayerManager3rd>(); //Get the PlayerManager3rd script
         animatorManager = GetComponent<AnimatorManager3rd>(); //Get the AnimatorManager3rd script
-        isGrounded = true;
+        isInteracting = true;
         inputManager = GetComponent<InputManager3rd>();
         playerRigidbody = GetComponent<Rigidbody>();
         cameraObject = Camera.main.transform;
@@ -115,7 +115,7 @@ public class PlayerMovement3rd : MonoBehaviour
     Vector3 rayCastOrigin = transform.position;
     rayCastOrigin.y = rayCastOrigin.y + rayCastHeightOffSet;
 
-    if (!isGrounded)
+    if (!isInteracting)
     {
         if (!playerManager.isInteracting)
         {
@@ -128,23 +128,23 @@ public class PlayerMovement3rd : MonoBehaviour
     }
     else
     {
-        animatorManager.PlayerTargetAnimation("IsGrounded", true);
+        animatorManager.PlayerTargetAnimation("IsInteracting", true);
     }
 
     if (Physics.SphereCast(rayCastOrigin, 0.1f, Vector3.down, out hit, maxDistance, groundLayer))
     {
-        if (!isGrounded && playerManager.isInteracting)
+        if (!isInteracting && playerManager.isInteracting)
         {
-            animatorManager.PlayerTargetAnimation("IsGrounded", true);
+            animatorManager.PlayerTargetAnimation("IsInteracting", true);
         }
 
         inAirTimer = 0;
-        isGrounded = true;
+        isInteracting = true;
         playerManager.isInteracting = false;
     }
     else
     {
-        isGrounded = false;
+        isInteracting = false;
     }
 }
 
